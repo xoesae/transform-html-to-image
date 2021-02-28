@@ -11,3 +11,14 @@ inputName.addEventListener('keyup', () => {
 inputDate.addEventListener('change', () => {
     previewDate.innerHTML = inputDate.value;
 });
+
+let btnGenerate = document.querySelector('.generate-image');
+let btnDownload = document.querySelector('.download');
+
+btnGenerate.addEventListener('click', () =>  {
+    html2canvas(document.querySelector(".preview")).then(canvas => {
+        btnDownload.href = canvas.toDataURL('image/png');
+        btnDownload.download =  'minha-imagem';
+        btnDownload.click();
+    })
+});
